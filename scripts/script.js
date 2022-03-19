@@ -1,12 +1,11 @@
-function butclick() {
-    console.log("here")
-    boxElem = document.querySelectorAll('.box')
-    boxElem[0].style.left="400px"
+
+function pageLoad() {
 
 }
-function startPage() {
-    console.log("here")
-    boxElem = document.querySelectorAll('.box')
-    boxElem[0].style.left="100%"
+
+function butClick() {
+    document.getElementById('firstPopUp').style.visibility='hidden'
+    document.getElementById('firstPopUp').remove()
+    document.getElementById('mainPage').classList='mainPageVisible'
 }
-startPage()
+

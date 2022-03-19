@@ -1,16 +1,72 @@
-#guessBoard .box {
-    position:absolute;
-    width:60px;
-    height:60px;
-    border-radius: 9999px;
-    background-color:red;
-    left:00px;   
-    top:350px;
-    transition-property: all;
-    transition-duration: 1.5s;
-    transition-timing-function:ease-in-out;
+/*  GLOBAL STYLINGS      */
+html {
+    background-color:black;
+    margin:0 25%;
+}
+h {
+    color: black;
+}
+body {
+    background-color:white;
+    width:100%;
+    height:1000px;
+    margin:0;
+
+    align-content:left;
 }
 button {
     width:100px;
     height:50px;
+}
+
+
+
+/* First Popup: Initial Screen styling  */
+.firstPopupVisibile{
+    padding:15% 15%;
+    display:normal;   
+}
+#outerBox {
+    border:3px solid rgb(187, 184, 184); 
+    border-radius: 15px; 
+    height:500px;  
+    box-shadow: 10px 10px; 
+}
+.popUpheading {
+    padding:15px 15px;
+
+}
+
+
+
+/* Main Game Page stylings     */
+#mainPage {
+
+}
+.mainPageInvisible{
+    display:none
+}
+.mainPageVisible{
+    position:relative;
+    display:normal;
+}
+
+/*  THE BOARD CSS PROPERTIES        */
+#guessBoard{
+    display:grid;
+    grid-template-columns: 1fr;
+ align-items: center;
+}
+#guessBoard .box {
+    width:80px;
+    height:80px;
+    margin:0 15px;
+    border-radius: 9999px;
+    background-color:rgb(206, 201, 201);
+    box-shadow: 0.2em 0.2em 0.4em #a3a7bd, -0.2em -0.2em 0.4em #fff;
+}
+#eachRow{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
 }

@@ -8,26 +8,49 @@
     <link href="styles/styles.css" rel="stylesheet" type="text/css">
     <link href="styles/boardstyles.css" rel="stylesheet" type="text/css">
     <link href="styles/keyboardstyles.css" rel="stylesheet" type="text/css">
-        
-    <script defer src = "scripts/constants.js"></script>
-    <script defer src = "scripts/script.js"></script>
+
+    <script defer src="scripts/constants.js"></script>
+    <script defer src="scripts/script.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <section id="body wrapper">
+    <section id="firstPopUp" class="firstPopupVisibile">
+        <div id="outerBox">
+            <div class="popUpheading">
+                <p>sdfsdf</p>
+            </div>
+            <div class="popupInstructions">
+
+            </div>
+             <button onclick="butClick()"></button>           
+        </div>
+        <footer id="firstPopupFooter">
+
+        </footer>
+
+    </section>
+    <section id="mainPage" class="mainPageInvisible">
         <section id="pageheader">
-            <button onclick="butclick()"></button>
+            <img src="banner" alt="no banner">
+            <h>WORDLE</h>
         </section>
 
         <section id="guessBoard">
-            <div class="box"></div>
-
+            <div id="eachRow">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+            </div>
         </section>
 
         <section id="keyboard">
 
         </section>
-        
+
     </section>
 
 </body>
