@@ -20,7 +20,6 @@ button {
 }
 
 
-
 /* First Popup: Initial Screen styling  */
 .firstPopupVisibile{
     padding:15% 15%;
@@ -34,7 +33,7 @@ button {
 }
 .popUpheading {
     padding:15px 15px;
-
+    text-align: center;;
 }
 
 
@@ -50,23 +49,37 @@ button {
     position:relative;
     display:normal;
 }
-
-/*  THE BOARD CSS PROPERTIES        */
-#guessBoard{
+/* The BOARD/GRID PROPERTIES */
+/*  THE ROW CSS PROPERTIES        */
+#row{
     display:grid;
-    grid-template-columns: 1fr;
- align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin:0 25% 5px;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
 }
-#guessBoard .box {
+#row .box {
     width:80px;
     height:80px;
-    margin:0 15px;
+    margin:0 15px 10px;
     border-radius: 9999px;
     background-color:rgb(206, 201, 201);
     box-shadow: 0.2em 0.2em 0.4em #a3a7bd, -0.2em -0.2em 0.4em #fff;
 }
-#eachRow{
-    display:flex;
-    flex-direction: row;
-    justify-content:center;
+.boxUsedLocation {
+    background-color: grey;
 }
+.boxWrongLocation {
+    background-color: orange;
+}
+.boxRightLocation {
+    background-color: green;
+}
+
+.boxLetter {
+    text-align:center;
+    font-size:26px;
+}
+
+

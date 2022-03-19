@@ -8,8 +8,9 @@
     <link href="styles/styles.css" rel="stylesheet" type="text/css">
     <link href="styles/boardstyles.css" rel="stylesheet" type="text/css">
     <link href="styles/keyboardstyles.css" rel="stylesheet" type="text/css">
-
-    <script defer src="scripts/constants.js"></script>
+    <script src="scripts/dictionary.js"></script>
+    <script src="scripts/constants_and_variables.js"></script>
+    <script defer src="scripts/privatescript.js"></script>
     <script defer src="scripts/script.js"></script>
     <title>Document</title>
 </head>
@@ -18,12 +19,12 @@
     <section id="firstPopUp" class="firstPopupVisibile">
         <div id="outerBox">
             <div class="popUpheading">
-                <p>sdfsdf</p>
+                <p>Wordle options</p>
             </div>
             <div class="popupInstructions">
 
             </div>
-             <button onclick="butClick()"></button>           
+            <button onclick="playGame()"> Play Me </button>
         </div>
         <footer id="firstPopupFooter">
 
@@ -35,18 +36,13 @@
             <img src="banner" alt="no banner">
             <h>WORDLE</h>
         </section>
-
-        <section id="guessBoard">
-            <div id="eachRow">
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
-            </div>
+        <section id="theGrid">
+            <section id="row">
+            </section>
+            
         </section>
-
+        <input type="text">
+        <button >click</button>
         <section id="keyboard">
 
         </section>
