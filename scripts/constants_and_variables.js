@@ -8,4 +8,4 @@ DEBUG_Random = true;
 let currentGuess = 0;
 let currentWord = ''
 let total_number_of_guesses = 8;
-let currentGuesses = []
+let listOfAllGuesses = []

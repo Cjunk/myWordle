@@ -2,8 +2,13 @@ textboxElem = document.getElementById("userInputBox")
 console.log("STARTING GAME")
 textboxElem.addEventListener('change', function (e) {
     if (__isWordAValidWord(e.target.value.toUpperCase())) {
-        currentGuesses.push(e.target.value.toUpperCase());
-        __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display        
+        listOfAllGuesses.push(e.target.value.toUpperCase());
+        result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display    
+        if(result == 5)
+        {
+            // This is a winning combination of letters.
+
+        }    
     }
     e.target.value = '';
 })
@@ -42,21 +47,21 @@ function __addNewGuessedWordToDisplay(correctWrd) {
     /* Gets the latest guessed word and populates the correct row*/
     displayText = document.querySelectorAll('.boxLetter')
     displayBoxes = document.querySelector('#row')
-    startingRow = currentGuesses.length - 1;
+    startingRow = listOfAllGuesses.length - 1;
     if (DEBUG) {
         console.log("*************    DEBUGGING FUNCTION: __addNewGuessedWordToDisplay() ")
         console.log("startingRow = ", startingRow);
         console.log("displayRows = ", displayText);
         console.log("displayBoxes = ", displayBoxes);
-        console.log(currentGuesses)
+        console.log(listOfAllGuesses)
     }
     for (t = 0; t < 5; t++) {  // create an array of the letters in the guessed word.
         correctWord.push(correctWrd[t])
-        displayText[t + (startingRow * 5)].textContent = currentGuesses[startingRow][t]
+        displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
     }
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
-        console.log(currentGuesses[startingRow][t],correctWord)
-        if (currentGuesses[startingRow][t] == correctWord[t]) {
+        console.log(listOfAllGuesses[startingRow][t],correctWord)
+        if (listOfAllGuesses[startingRow][t] == correctWord[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
             correctWord[t] = '';  // Letter has been marked off so disregard. 
@@ -65,7 +70,7 @@ function __addNewGuessedWordToDisplay(correctWrd) {
         }
     }
     for (t = 0; t < 5; t++) {  
-        if (correctWord.indexOf(currentGuesses[startingRow][t]) > -1) {
+        if (correctWord.indexOf(listOfAllGuesses[startingRow][t]) > -1) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
         }
     }

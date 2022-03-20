@@ -82,12 +82,13 @@ button {
 }
 #theGrid {
     display:grid;
-    grid-template-columns: 50% 50%;    
+    grid-template-columns: 15% 70% 15%;  
+    width:100%;  
 }
 #sidePanel {
     DISPLAY:GRID;
     grid-template-columns: 50% 50%;
-    WIDTH:20%;
+    WIDTH:100%;
     margin:auto 25%;
 }
 .boxUsedLocation {
@@ -98,6 +99,7 @@ button {
 .boxWrongLocation {
     text-align:center;
     background-color: orange;
+    rotate: 30deg;
 }
 .boxRightLocation {
     text-align:center;
@@ -116,7 +118,7 @@ button {
 }
 #userControl {
     display:grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 25% 25% 25%;
 }
 #userButton {
     margin:0 15px;
@@ -125,11 +127,29 @@ button {
 }
 
 .alphaBet {
-    width:20px;
-    height:20px;
+    width:30px;
+    height:30px;
     border:1px solid black;
     border-radius: 20px;
     margin:5px 15px;
     text-align:center;
     align-items:center;
+}
+.alphaBetCorrect {
+    width:30px;
+    height:30px;
+    border:1px solid black;
+    border-radius: 20px;
+    margin:5px 15px;
+    text-align:center;
+    align-items:center;
+    background-color: green;
+}
+
+.letterchoices {
+    text-align:center;
+    margin:0;
+    padding:0;
+    font-size:26px;
+    line-height:26px;
 }
