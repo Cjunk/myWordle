@@ -14,7 +14,7 @@ img {
 body {
     background-color:white;
     display:inline-block;
-    height:1000px;
+  
     border-radius:45px;
     margin:auto;
 }
@@ -101,7 +101,6 @@ button {
 .boxWrongLocation {
     text-align:center;
     background-color: orange;
-    rotate: 30deg;
 }
 .boxRightLocation {
     text-align:center;
