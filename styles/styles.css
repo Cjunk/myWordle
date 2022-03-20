@@ -9,6 +9,7 @@ h {
 }
 img {
     width:100%;
+    display:grid;
 }
 body {
     background-color:white;
@@ -17,7 +18,7 @@ body {
     margin:0;
     background-image:url('images/backyrad.jpg');
     align-content:center;
-    border-radius:45px
+    border-radius:45px;
 }
 button {
     width:100px;
@@ -43,7 +44,10 @@ button {
     padding:15px 15px;
     text-align: center;;
 }
+#pageheader {
+   
 
+}
 
 
 /* Main Game Page stylings     */
@@ -61,11 +65,12 @@ button {
 /*  THE ROW CSS PROPERTIES        */
 #row{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    margin:0 25% 5px;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+
     align-items: center;
     text-align: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    width:100%;
 }
 .box {
     width:80px;
@@ -82,14 +87,17 @@ button {
 }
 #theGrid {
     display:grid;
-    grid-template-columns: 15% 70% 15%;  
-    width:100%;  
+    grid-template-columns: 20% auto 20%;  
+    width:100%;
+    max-width:1200px;  
+    margin:0 auto;
 }
+
 #sidePanel {
     DISPLAY:GRID;
     grid-template-columns: 50% 50%;
     WIDTH:100%;
-    margin:auto 25%;
+    margin:auto 15%;
 }
 .boxUsedLocation {
 

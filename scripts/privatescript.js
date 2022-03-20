@@ -4,11 +4,10 @@ textboxElem.addEventListener('change', function (e) {
     if (__isWordAValidWord(e.target.value.toUpperCase())) {
         listOfAllGuesses.push(e.target.value.toUpperCase());
         result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display    
-        if(result == 5)
-        {
+        if (result == 5) {
             // This is a winning combination of letters.
 
-        }    
+        }
     }
     e.target.value = '';
 })
@@ -41,9 +40,10 @@ function __addFullRow() {
 }
 function __addNewGuessedWordToDisplay(correctWrd) {
     let DEBUG = false
-    let currentGuess = []; 
+    let currentGuess = [];
     let correctWord = []; // Create copy of the correct word so we can manipualte it
-    let returnResult = 0; // used to identify the result on return from function   
+    let returnResult = 0; // used to identify the result on return from function  
+    let alphaBlocks = document.querySelectorAll('.letterchoices')
     /* Gets the latest guessed word and populates the correct row*/
     displayText = document.querySelectorAll('.boxLetter')
     displayBoxes = document.querySelector('#row')
@@ -55,23 +55,29 @@ function __addNewGuessedWordToDisplay(correctWrd) {
         console.log("displayBoxes = ", displayBoxes);
         console.log(listOfAllGuesses)
     }
+
     for (t = 0; t < 5; t++) {  // create an array of the letters in the guessed word.
         correctWord.push(correctWrd[t])
         displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
+
     }
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
-        console.log(listOfAllGuesses[startingRow][t],correctWord)
+            alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word        
         if (listOfAllGuesses[startingRow][t] == correctWord[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
             correctWord[t] = '';  // Letter has been marked off so disregard. 
-        }else {
+            alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'green'
+        } else {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxUsedLocation'
+            alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'grey'
         }
     }
-    for (t = 0; t < 5; t++) {  
+    for (t = 0; t < 5; t++) {
         if (correctWord.indexOf(listOfAllGuesses[startingRow][t]) > -1) {
+            alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
+            alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'orange'
         }
     }
     //  Check if this is the maximum number of possible entries.
