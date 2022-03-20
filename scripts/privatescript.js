@@ -1,23 +1,74 @@
-
+textboxElem = document.getElementById("userInputBox")
+console.log("STARTING GAME")
+textboxElem.addEventListener('change', function (e) {
+    if (__isWordAValidWord(e.target.value.toUpperCase())) {
+        currentGuesses.push(e.target.value.toUpperCase());
+        __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display        
+    }
+    e.target.value = '';
+})
 function __getRandomWord(theWordList) {
     // returns a random word from the dictionary
     return theWordList[Math.floor(Math.random() * theWordList.length)]
 }
-function __isWordAValidWord (guessedWord){
+function __isWordAValidWord(guessedWord) {
     /*
         Will return true or false if the word guess is in the dictionary or  not
     */
-   if(validWords.indexOf(guessedWord.toUpperCase())> 0)
+    if (validWords.indexOf(guessedWord.toUpperCase()) > 0)
         return true;
     return false;
 }
-function __addABoxToTheGrid(){
+function __addABoxToTheGrid() {
+    /* Code responsible for adding a single letter box to the grid */
     gridElem = document.getElementById('row');
     newBoxElem = document.createElement('div');
     newPElem = document.createElement('p');
-
     newPElem.classList = 'boxLetter';
-    newBoxElem.classList="box";
+    newBoxElem.classList = "box unusedBox";
     newBoxElem.appendChild(newPElem);
     gridElem.appendChild(newBoxElem);
+}
+function __addFullRow() {
+    for (item = 0; item < 5; item++) {
+        __addABoxToTheGrid()
+    }
+}
+function __addNewGuessedWordToDisplay(correctWrd) {
+    let DEBUG = false
+    let currentGuess = []; 
+    let correctWord = []; // Create copy of the correct word so we can manipualte it
+    let returnResult = 0; // used to identify the result on return from function   
+    /* Gets the latest guessed word and populates the correct row*/
+    displayText = document.querySelectorAll('.boxLetter')
+    displayBoxes = document.querySelector('#row')
+    startingRow = currentGuesses.length - 1;
+    if (DEBUG) {
+        console.log("*************    DEBUGGING FUNCTION: __addNewGuessedWordToDisplay() ")
+        console.log("startingRow = ", startingRow);
+        console.log("displayRows = ", displayText);
+        console.log("displayBoxes = ", displayBoxes);
+        console.log(currentGuesses)
+    }
+    for (t = 0; t < 5; t++) {  // create an array of the letters in the guessed word.
+        correctWord.push(correctWrd[t])
+        displayText[t + (startingRow * 5)].textContent = currentGuesses[startingRow][t]
+    }
+    for (t = 0; t < 5; t++) {  // Mark of the correct placements
+        console.log(currentGuesses[startingRow][t],correctWord)
+        if (currentGuesses[startingRow][t] == correctWord[t]) {
+            displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
+            returnResult++;
+            correctWord[t] = '';  // Letter has been marked off so disregard. 
+        }else {
+            displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxUsedLocation'
+        }
+    }
+    for (t = 0; t < 5; t++) {  
+        if (correctWord.indexOf(currentGuesses[startingRow][t]) > -1) {
+            displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
+        }
+    }
+    //  Check if this is the maximum number of possible entries.
+    return returnResult;   // if 5 returned then this is a winner
 }

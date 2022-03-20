@@ -2,24 +2,32 @@
 html {
     background-color:black;
     margin:0 25%;
+
 }
 h {
     color: black;
+}
+img {
+    width:100%;
 }
 body {
     background-color:white;
     width:100%;
     height:1000px;
     margin:0;
-
-    align-content:left;
+    background-image:url('images/backyrad.jpg');
+    align-content:center;
+    border-radius:45px
 }
 button {
     width:100px;
     height:50px;
 }
 
+#theGrid {
+    width:50%;
 
+}
 /* First Popup: Initial Screen styling  */
 .firstPopupVisibile{
     padding:15% 15%;
@@ -59,27 +67,69 @@ button {
     text-align: center;
     justify-content: space-around;
 }
-#row .box {
+.box {
     width:80px;
     height:80px;
     margin:0 15px 10px;
     border-radius: 9999px;
-    background-color:rgb(206, 201, 201);
     box-shadow: 0.2em 0.2em 0.4em #a3a7bd, -0.2em -0.2em 0.4em #fff;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+.unusedBox {
+    background-color:rgb(206, 201, 201);
+}
+#theGrid {
+    display:grid;
+    grid-template-columns: 50% 50%;    
+}
+#sidePanel {
+    DISPLAY:GRID;
+    grid-template-columns: 50% 50%;
+    WIDTH:20%;
+    margin:auto 25%;
 }
 .boxUsedLocation {
+
+    text-align:center;
     background-color: grey;
 }
 .boxWrongLocation {
+    text-align:center;
     background-color: orange;
 }
 .boxRightLocation {
+    text-align:center;
     background-color: green;
 }
-
 .boxLetter {
     text-align:center;
     font-size:26px;
 }
+#userInputBox {
+    width:100%;
+    text-align:center;
+    border-radius: 35px;
+    background-color: rgb(248, 248, 176);
+    font-size:30px;
+}
+#userControl {
+    display:grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+#userButton {
+    margin:0 15px;
+    border-radius: 25px;
+    border:1px solid grey;
+}
 
-
+.alphaBet {
+    width:20px;
+    height:20px;
+    border:1px solid black;
+    border-radius: 20px;
+    margin:5px 15px;
+    text-align:center;
+    align-items:center;
+}
