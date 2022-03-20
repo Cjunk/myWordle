@@ -13,6 +13,9 @@ textboxElem.addEventListener('change', function (e) {
 })
 function __getRandomWord(theWordList) {
     // returns a random word from the dictionary
+    if (DEBUG_RANDOM_WORD) {
+        return DEBUG_WORD
+    }
     return theWordList[Math.floor(Math.random() * theWordList.length)]
 }
 function __isWordAValidWord(guessedWord) {
@@ -61,25 +64,31 @@ function __addNewGuessedWordToDisplay(correctWrd) {
         displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
 
     }
+
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
-            alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word        
+        alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word        
         if (listOfAllGuesses[startingRow][t] == correctWord[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
             correctWord[t] = '';  // Letter has been marked off so disregard. 
+            console.log(correctWord)
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'green'
-        } else {
+        }
+        else {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxUsedLocation'
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'grey'
         }
     }
     for (t = 0; t < 5; t++) {
+        if(correctWord[t]!=''){
         if (correctWord.indexOf(listOfAllGuesses[startingRow][t]) > -1) {
             alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'orange'
         }
     }
+    }
+
     //  Check if this is the maximum number of possible entries.
     return returnResult;   // if 5 returned then this is a winner
 }

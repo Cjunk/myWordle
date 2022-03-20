@@ -12,7 +12,7 @@
     <script src="scripts/constants_and_variables.js"></script>
     <script defer src="scripts/privatescript.js"></script>
     <script defer src="scripts/script.js"></script>
-    <title>Document</title>
+    <title>Wordle</title>
 </head>
 
 <body>
@@ -25,61 +25,109 @@
                 <p>Wordle options</p>
             </div>
             <div class="popupInstructions">
-
             </div>
             <button onclick="playGame()"> Play Me </button>
         </div>
         <footer id="firstPopupFooter">
-
         </footer>
-
     </section>
     <section id="mainPage" class="mainPageInvisible">
 
         <section id="theGrid">
             <section id="sidePanel">
-                <section >
-                    <div class="alphaBet"><p class="letterchoices">A</p></div>
-                    <div class="alphaBet"><p class="letterchoices">B</p></div>
-                    <div class="alphaBet"><p class="letterchoices">C</p></div>
-                    <div class="alphaBet"><p class="letterchoices">D</p></div>
-                    <div class="alphaBet"><p class="letterchoices">E</p></div>
-                    <div class="alphaBet"><p class="letterchoices">F</p></div>
-                    <div class="alphaBet"><p class="letterchoices">G</p></div>
-                    <div class="alphaBet"><p class="letterchoices">H</p></div>
-                    <div class="alphaBet"><p class="letterchoices">I</p></div>
-                    <div class="alphaBet"><p class="letterchoices">J</p></div>
-                    <div class="alphaBet"><p class="letterchoices">K</p></div>
-                    <div class="alphaBet"><p class="letterchoices">L</p></div>
-                    <div class="alphaBet"><p class="letterchoices">M</p></div>
+                <section>
+                    <div class="alphaBet">
+                        <p class="letterchoices">A</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">B</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">C</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">D</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">E</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">F</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">G</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">H</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">I</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">J</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">K</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">L</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">M</p>
+                    </div>
                 </section>
                 <section>
-                    <div class="alphaBet"><p class="letterchoices">N</p></div>
-                    <div class="alphaBet"><p class="letterchoices">O</p></div>
-                    <div class="alphaBet"><p class="letterchoices">P</p></div>
-                    <div class="alphaBet"><p class="letterchoices">Q</p></div>
-                    <div class="alphaBet"><p class="letterchoices">R</p></div>
-                    <div class="alphaBet"><p class="letterchoices">S</p></div>
-                    <div class="alphaBet"><p class="letterchoices">T</p></div>
-                    <div class="alphaBet"><p class="letterchoices">U</p></div>
-                    <div class="alphaBet"><p class="letterchoices">V</p></div>
-                    <div class="alphaBet"><p class="letterchoices">W</p></div>
-                    <div class="alphaBet"><p class="letterchoices">X</p></div>
-                    <div class="alphaBet"><p class="letterchoices">Y</p></div>
-                    <div class="alphaBet"><p class="letterchoices">Z</p></div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">N</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">O</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">P</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">Q</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">R</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">S</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">T</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">U</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">V</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">W</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">X</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">Y</p>
+                    </div>
+                    <div class="alphaBet">
+                        <p class="letterchoices">Z</p>
+                    </div>
                 </section>
             </section>
             <section id="row"></section>
-        </section>
-        <section id="userControl">
-            <div></div>
-            <input type="text" id="userInputBox">
-            <button id="userButton">click</button>
-        </section>
-
-        <section id="keyboard">
+            <section id="bitcoinSection">
+                <!-- <img src="images/bitcoin-logo-font.jpg" alt="" id="bitcoinLogo"> -->
+                <img src="images/bitcoin_wallet.jpg" alt="" class="bitcoinImg">
+                <p>Buy me a coffee</p>
+            </section>
         </section>
     </section>
+    <input type="text" id="userInputBox">
+
 
 </body>
 
