@@ -1,0 +1,79 @@
+body {
+    padding:0;
+    margin:0;
+    height:5000%;
+    align-items: center;
+}
+.banner_class {
+    height:100px;
+    display:flex;
+    width:100%;
+    color:red;
+    opacity:100%;
+    background-color:rgb(131, 131, 245);
+    align-items:center;
+    justify-content:center;
+    border:2px;
+    border-color:black;
+    border-style:outset;
+}
+.button1{
+    padding:0;
+    width:12%;
+    height:10%;
+    top:0;
+    bottom:0;
+    text-align:center;
+}
+.button2{
+    padding:5;
+    width:12%;
+    height:10%;
+    top:0;
+    bottom:0;
+    text-align:center;
+}
+.textbox{
+    width: 5%;
+    height:100%;
+    margin:2;
+    padding:2;
+    text-align:center;
+    border-color:red;
+    justify-content:center;
+    color:green;
+}
+.theLettersBox {
+    border-color:rgb(182, 135, 16);
+    border-style:outset; 
+    align-items:center;
+    justify-content:center;
+    display:flex;
+
+
+}
+.the_title {
+    font-size:36px;
+    font-weight:bold;
+}
+.thelist_div{
+    position:relative;
+    border: 5px solid #881b88;
+    text-align:center;
+    height:100%;
+    width:50%;
+    left:25%;
+    top:25%;
+}
+#encase {
+
+    position:absolute;
+    top:24%;
+}
+.wordle_paragraph{
+    color:blue;
+    padding:5;
+    font-weight:bold;
+    font-size:32px;
+    align-items: center;
+}

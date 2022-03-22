@@ -58,13 +58,11 @@ function __addNewGuessedWordToDisplay(correctWrd) {
         console.log("displayBoxes = ", displayBoxes);
         console.log(listOfAllGuesses)
     }
-
     for (t = 0; t < 5; t++) {  // create an array of the letters in the guessed word.
         correctWord.push(correctWrd[t])
         displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
 
     }
-
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
         alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word        
         if (listOfAllGuesses[startingRow][t] == correctWord[t]) {

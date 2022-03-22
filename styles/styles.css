@@ -1,10 +1,10 @@
-/*  GLOBAL STYLINGS      */
+/*  All Elements defaults    
+*/
 html {
     background-color:black;
-    margin:0 25%;
-
+    margin:0 0%;
 }
-h {
+h1 {
     color: black;
 }
 img {
@@ -14,17 +14,19 @@ img {
 body {
     background-color:white;
     display:inline-block;
-  
+
     border-radius:45px;
     margin:auto;
 }
-
 button {
     width:100px;
     height:50px;
 }
 
-/* First Popup: Initial Screen styling  */
+
+/* First Popup: ***************************************************
+    First Screen styling: The options screen at the start
+*/
 .firstPopupVisibile{
     padding:15% 15%;
     display:normal;   
@@ -32,23 +34,20 @@ button {
 #outerBox {
     border:3px solid rgb(187, 184, 184); 
     border-radius: 15px; 
+    box-shadow: 10px 10px;     
     height:500px;  
-    box-shadow: 10px 10px; 
 }
 .popUpheading {
     padding:15px 15px;
     text-align: center;;
 }
 #pageheader {
-   
-
+    animation: slide_up 1.4s ease; 
 }
 
-
-/* Main Game Page stylings     */
-#mainPage {
-
-}
+/* Main Game Page stylings: *************************************************** 
+    This is where the game board and user input takes place
+*/
 .mainPageInvisible{
     display:none
 }
@@ -56,12 +55,19 @@ button {
     position:relative;
     display:normal;
 }
+#theGrid {
+    display:grid;
+    grid-template-columns: 1fr 60% 1fr;  
+    margin:5px auto;
+}
+#theGrid {
+    border:1px solid black;
+}
 /* The BOARD/GRID PROPERTIES */
-/*  THE ROW CSS PROPERTIES        */
 #row{
     display:grid;
+    grid-gap:0;
     grid-template-columns: 20% 20% 20% 20% 20%;
-
     margin:5px;
     border:2px solid gold;
     padding:5px;
@@ -74,42 +80,60 @@ button {
     box-shadow: 0.2em 0.2em 0.4em #a3a7bd, -0.2em -0.2em 0.4em #fff;
     transition-property: all;
     transition-duration: 1s;
+    text-align:center;    
 }
-
 .unusedBox {
     background-color:rgb(206, 201, 201);
 }
-#theGrid {
-    display:grid;
-    grid-template-columns: 1fr 60% 1fr;  
-    margin:5px auto;
-}
-#theGrid {
-    border:1px solid black;
-}
-#sidePanel {
-    DISPLAY:GRID;
-    grid-template-columns: 50% 50%;
-    WIDTH:100%;
-    margin:auto 15%;
-}
 .boxUsedLocation {
-
-    text-align:center;
     background-color: grey;
 }
 .boxWrongLocation {
-    text-align:center;
     background-color: orange;
 }
 .boxRightLocation {
-    text-align:center;
     background-color: green;
 }
 .boxLetter {
     text-align:center;
     font-size:26px;
 }
+
+/* Left hand side panel Chosen letters section */ 
+
+#sidePanel {
+    /*  Chosen letters highlighted */
+    display:grid;
+    grid-template-columns: 50% 50%;
+    width: 50%;
+    margin:auto;
+}
+#alphaLetters {
+    width:50%;
+}
+.alphaBet,.alphaBetCorrect {
+    /* tHE OUTER BOX WRAPPER OF THE LETTER */
+    width:30px;
+    height:30px;
+    border:1px solid black;
+    border-radius: 20px;
+    margin:5px 15px;
+    text-align:center;
+    align-items:center;
+    background-color: rgb(236, 231, 231);
+}
+.alphaBetCorrect {
+    background-color: green;
+}
+.letterchoices {
+    text-align:center;
+    margin:0;
+    padding:0;
+    font-size:26px;
+    line-height:26px;
+}
+
+/* User input */
 #userInputBox {
     display:block;
     width:20%;
@@ -129,33 +153,7 @@ button {
     border:1px solid grey;
 }
 
-.alphaBet {
-    width:30px;
-    height:30px;
-    border:1px solid black;
-    border-radius: 20px;
-    margin:5px 15px;
-    text-align:center;
-    align-items:center;
-}
-.alphaBetCorrect {
-    width:30px;
-    height:30px;
-    border:1px solid black;
-    border-radius: 20px;
-    margin:5px 15px;
-    text-align:center;
-    align-items:center;
-    background-color: green;
-}
-
-.letterchoices {
-    text-align:center;
-    margin:0;
-    padding:0;
-    font-size:26px;
-    line-height:26px;
-}
+/* right side panel */
 .bitcoinImg {
     grid-row-start: 4;
     width:50%;
@@ -172,9 +170,29 @@ button {
     text-align:center;
     font-size:12px;
     color: gold
-    ;
+    
 }
-#bitcoinLogo {
-    width:40%;
+.rightSidePanel {
     margin:auto;
+}
+#wordleHelperButton {
+    display:block;
+    margin:auto;
+    text-align:center;
+}
+#rightSideScoring {
+    background-color: red;
+}
+/* Animations */
+@keyframes slide_up{
+    0% {
+        transform:translateY(200px);
+    }
+    100% {
+        transform:translateX(0);
+    }
+}
+.backg {
+    background:white;
+    animation: slide_up 1.4s ease;
 }

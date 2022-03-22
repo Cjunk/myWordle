@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style/style.css" rel="stylesheet" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <div id='page_banner' color='red' class='banner_class'>
+        <p class="wordle_paragraph">WORDLE Helper :) :) </p>
+    </div>
+    <div id="encase">
+        <div class="thelist_div">
+            <p class="the_title">What are your green letters?</p>
+            <div class="theLettersBox">
+                <button class="button" class="button3" type="button" onclick="clear_word()">CLEAR WORD</button>
+                <input class="textbox" type="text" id="fname1" style="font-size:45px" name="fname"
+                    maxlength="1"><br><br>
+                <input class="textbox" type="text" id="fname2" style="font-size:45px" name="fname"
+                    maxlength="1"><br><br>
+                <input class="textbox" type="text" id="fname3" style="font-size:45px" name="fname"
+                    maxlength="1"><br><br>
+                <input class="textbox" type="text" id="fname4" style="font-size:45px" name="fname"
+                    maxlength="1"><br><br>
+                <input class="textbox" type="text" id="fname5"  style="font-size:45px" name="fname"
+                    maxlength="1"><br><br>
+                <button class="button" class="button1" type="button" onclick="func()">CHECK</button>
+                <button class="button" class="button2" type="button" onclick="reset_results()">CLEAR</button>
+            </div>
+            <div>
+                <p style="text-decoration:underline;">RESULTS BELOW</p>
+
+                <div id="results_div"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+    <script src="scripts/script1.js"></script>
+    <script src="scripts/Homework_Script.js"></script> 
+    </html>
