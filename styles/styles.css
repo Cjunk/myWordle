@@ -104,7 +104,7 @@ button {
 #sidePanel {
     /*  Chosen letters highlighted */
     display:grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 45% 45% 10%;
     width: 50%;
     margin:auto;
 }
@@ -122,6 +122,9 @@ button {
     align-items:center;
     background-color: rgb(236, 231, 231);
 }
+.alphaBet,.alphaBetCorrect:hover {
+cursor: pointer;
+}
 .alphaBetCorrect {
     background-color: green;
 }
@@ -132,9 +135,16 @@ button {
     font-size:26px;
     line-height:26px;
 }
-
+#enterButton {
+    grid-column-start: 3;
+    grid-row-start: 3;
+}
 /* User input */
-#userInputBox {
+.userInputBox {
+    display:none;
+}
+.userInputBoxVisible {
+    visibility: 'visible';
     display:block;
     width:20%;
     margin:15px auto; 
@@ -151,6 +161,11 @@ button {
     margin:0 15px;
     border-radius: 25px;
     border:1px solid grey;
+}
+#userButtonVisible {
+    margin:0 15px;
+    border-radius: 25px;
+    border:1px solid grey;   
 }
 
 /* right side panel */
@@ -181,7 +196,19 @@ button {
     text-align:center;
 }
 #rightSideScoring {
-    background-color: red;
+ 
+}
+/*
+
+*/
+#notValidWord {
+    width:10%;
+    height: 10px;
+    position:fixed;
+    background-color: red;;
+    top:25%;
+    left:20%;
+    margin:auto;
 }
 /* Animations */
 @keyframes slide_up{

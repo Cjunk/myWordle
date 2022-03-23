@@ -13,9 +13,17 @@
     <script defer src="scripts/privatescript.js"></script>
     <script defer src="scripts/script.js"></script>
     <title>Wordle</title>
+    <meta property="og:url" content="https://www.facebook.com/CJunk351" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Your Website Title" />
+    <meta property="og:description" content="Your description" />
+    <meta property="og:image" content="https://www.your-domain.com/path/image.jpg" />
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0"
+        nonce="sFRcbjBt"></script>
     <section id="pageheader">
         <img src="images/wordle_banner.png" alt="no banner">
     </section>
@@ -36,93 +44,97 @@
         <section id="theGrid">
             <section id="sidePanel">
                 <section id="alphaLetters">
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">A</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">B</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">C</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">D</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">E</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">F</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">G</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">H</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">I</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">J</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">K</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">L</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">M</p>
                     </div>
                 </section>
                 <section id="alphaLetters">
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">N</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">O</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">P</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">Q</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">R</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">S</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">T</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">U</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">V</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">W</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">X</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">Y</p>
                     </div>
-                    <div class="alphaBet">
+                    <div class="alphaBet" onclick="clickedLetter(this)">
                         <p class="letterchoices">Z</p>
                     </div>
+                </section>
+                <section>
+                    <button id="enterButton" onclick="enterBut()">click me</button>
                 </section>
             </section>
             <section id="row"></section>
             <section class="rightSidePanel">
                 <section id="rightSideScoring">
-                    
+                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2FCJunk351&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </section>
+
                 <section id="bitcoinSection">
                     <!-- <img src="images/bitcoin-logo-font.jpg" alt="" id="bitcoinLogo"> -->
                     <img src="images/bitcoin_wallet.jpg" alt="" class="bitcoinImg">
@@ -130,13 +142,18 @@
                     <p><a href="https://www.buymeacoffee.com/jerichosharman" target="_blank">Buy me a coffee</a></p>
                     <p>Bitcoin</p>
                 </section>
-                <a href="1-tuesday/index.html" id="wordleHelperButton" target="_blank">Helper</button>
+                <a href="1-tuesday/index.html" id="wordleHelperButton" target="_blank">Helper</a>
+
             </section>
         </section>
-        
-    </section>
-    <input type="text" id="userInputBox">
 
+        <section id="notValidWord">
+            <p>Not a valid word</p>
+
+        </section>
+
+    </section>
+    <input type="text" id="userInputBox" class="userInputBox">
 
 </body>
 

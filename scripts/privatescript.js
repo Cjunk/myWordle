@@ -1,16 +1,30 @@
 textboxElem = document.getElementById("userInputBox")
 console.log("STARTING GAME")
 textboxElem.addEventListener('change', function (e) {
-    if (__isWordAValidWord(e.target.value.toUpperCase())) {
-        listOfAllGuesses.push(e.target.value.toUpperCase());
+    __registerNewWord()
+})
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+function __registerNewWord() {
+    textboxelem = document.getElementById('userInputBox')
+    if (__isWordAValidWord(textboxelem.value.toUpperCase())) {
+        listOfAllGuesses.push(textboxelem.value.toUpperCase());
         result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display    
         if (result == 5) {
             // This is a winning combination of letters.
 
         }
     }
-    e.target.value = '';
-})
+    textboxelem.value = '';
+}
+
+
+
 function __getRandomWord(theWordList) {
     // returns a random word from the dictionary
     if (DEBUG_RANDOM_WORD) {
@@ -78,13 +92,13 @@ function __addNewGuessedWordToDisplay(correctWrd) {
         }
     }
     for (t = 0; t < 5; t++) {
-        if(correctWord[t]!=''){
-        if (correctWord.indexOf(listOfAllGuesses[startingRow][t]) > -1) {
-            alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
-            displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
-            alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'orange'
+        if (correctWord[t] != '') {
+            if (correctWord.indexOf(listOfAllGuesses[startingRow][t]) > -1) {
+                alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
+                displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
+                alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'orange'
+            }
         }
-    }
     }
 
     //  Check if this is the maximum number of possible entries.
