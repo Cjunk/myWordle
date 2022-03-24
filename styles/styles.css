@@ -2,7 +2,7 @@
 */
 html {
     background-color:black;
-    margin:0 0%;
+    margin:auto;
 }
 h1 {
     color: black;
@@ -14,15 +14,9 @@ img {
 body {
     background-color:white;
     display:inline-block;
-
     border-radius:45px;
-    margin:auto;
-}
-button {
-    width:100px;
-    height:50px;
-}
 
+}
 
 /* First Popup: ***************************************************
     First Screen styling: The options screen at the start
@@ -41,9 +35,7 @@ button {
     padding:15px 15px;
     text-align: center;;
 }
-#pageheader {
-    animation: slide_up 1.4s ease; 
-}
+
 
 /* Main Game Page stylings: *************************************************** 
     This is where the game board and user input takes place
@@ -52,16 +44,66 @@ button {
     display:none
 }
 .mainPageVisible{
-    position:relative;
+    width:100%;
     display:normal;
 }
-
-#theGrid {
-    display:grid;
-    grid-template-columns: 1fr 3fr 1fr;  
-    margin:5px auto;
-    border:1px solid black;   
+#pageheader {
+    grid-column:1/4;
+    animation: slide_up 1.4s ease; 
 }
+#mainPage {
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;  
+    margin:5px auto;
+    grid-gap:10px;
+}
+/* Left hand side panel Chosen letters section */ 
+#sidePanel {
+    /*  Chosen letters highlighted */
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    margin:auto;
+    justify-items:center;
+}
+#alphaLetters {
+    width:50%;
+}
+.alphaBet,.alphaBetCorrect {
+    /* tHE OUTER BOX WRAPPER OF THE LETTER */
+    width:30px;
+    height:30px;
+    border:1px solid black;
+    border-radius: 20px;
+    margin:5px 15px;
+    text-align:center;
+    align-items:center;
+    background-color: rgb(236, 231, 231);
+}
+.alphaBet,.alphaBetCorrect:hover {
+cursor: pointer;
+}
+.alphaBetCorrect {
+    background-color: green;
+}
+.letterchoices {
+    text-align:center;
+    margin:0;
+    padding:0;
+    font-size:26px;
+
+}
+#enterButton {
+    margin:2px;
+    height:100%;
+    width:100%;
+}
+#backspaceButton {
+    margin:2px;
+    height:100%;
+    width:100%;
+}
+
 /* The BOARD/GRID PROPERTIES */
 #row{
     display:grid;
@@ -70,6 +112,7 @@ button {
     margin:5px;
     border:2px solid gold;
     padding:5px;
+    justify-items: center;
 }
 .box {
     width:70px;
@@ -98,54 +141,15 @@ button {
     font-size:26px;
 }
 
-/* Left hand side panel Chosen letters section */ 
 
-#sidePanel {
-    /*  Chosen letters highlighted */
-    display:grid;
-    grid-template-columns: 45% 45% 10%;
-    width: 50%;
-    margin:auto;
-}
-#alphaLetters {
-    width:50%;
-}
-.alphaBet,.alphaBetCorrect {
-    /* tHE OUTER BOX WRAPPER OF THE LETTER */
-    width:30px;
-    height:30px;
-    border:1px solid black;
-    border-radius: 20px;
-    margin:5px 15px;
-    text-align:center;
-    align-items:center;
-    background-color: rgb(236, 231, 231);
-}
-.alphaBet,.alphaBetCorrect:hover {
-cursor: pointer;
-}
-.alphaBetCorrect {
-    background-color: green;
-}
-.letterchoices {
-    text-align:center;
-    margin:0;
-    padding:0;
-    font-size:26px;
-    line-height:26px;
-}
-#enterButton {
-    grid-column-start: 3;
-    grid-row-start: 3;
-}
 /* User input */
 .userInputBox {
     display:none;
 }
 .userInputBoxVisible {
     visibility: 'visible';
-    display:block;
-    width:20%;
+    grid-column-start:2;
+    width:40%;
     margin:15px auto; 
     text-align:center;
     border-radius: 35px;
@@ -170,12 +174,12 @@ cursor: pointer;
 /* right side panel */
 .bitcoinImg {
     grid-row-start: 4;
-    width:50%;
+    width:40px;
+
     margin:auto;
 }
 #bitcoinSection {
     margin:auto;
-    background: rgb(183, 173, 206);
     padding:15px;
 
 }
@@ -197,6 +201,27 @@ cursor: pointer;
 #rightSideScoring {
  
 }
+#statistics {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    border:1px solid gold;
+    margin:0 0 15px;
+}
+
+#resetstatsBut {
+    grid-column: 1/3;
+    width:80%;
+    margin:0 0 5px;
+}
+#facebookShareIcon {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+iframe {
+    grid-column:2;
+    margin:15px 0 15px;
+}
 /*
 
 */
@@ -207,9 +232,15 @@ cursor: pointer;
     background-color: red;
     border:2px solid grey;
     background-color: blue;
-    top:25%;
-    left:20%;
+    top:30%;
+    left:25%;
     margin:auto;
+}
+.notValidWordInvisible {
+display:none;
+}
+.notValidWordVisible {
+display:normal;
 }
 /* Animations */
 @keyframes slide_up{

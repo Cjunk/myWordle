@@ -1,5 +1,4 @@
 textboxElem = document.getElementById("userInputBox")
-console.log("STARTING GAME")
 textboxElem.addEventListener('change', function (e) {
     __registerNewWord()
 })
@@ -11,20 +10,30 @@ textboxElem.addEventListener('change', function (e) {
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 function __registerNewWord() {
+    /*
+
+    */
+    currentGuess++
     textboxelem = document.getElementById('userInputBox')
     if (__isWordAValidWord(textboxelem.value.toUpperCase())) {
         listOfAllGuesses.push(textboxelem.value.toUpperCase());
         result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display    
         if (result == 5) {
             // This is a winning combination of letters.
+            __addGamesOne() 
+            resetGame()
 
+        }else {
+            // check if there are any more guesses left
+            if(currentGuess == total_number_of_guesses){
+                // NO MORE guesses left
+                resetGame()
+                document.getElementById('winningStreak').textContent = '0'
+            }
         }
     }
     textboxelem.value = '';
 }
-
-
-
 function __getRandomWord(theWordList) {
     // returns a random word from the dictionary
     if (DEBUG_RANDOM_WORD) {
@@ -51,13 +60,20 @@ function __addABoxToTheGrid() {
     gridElem.appendChild(newBoxElem);
 }
 function __addFullRow() {
+    /*
+        Internal function to prepare the display with the correct number of guesses
+    */
     for (item = 0; item < 5; item++) {
         __addABoxToTheGrid()
     }
 }
 function __addNewGuessedWordToDisplay(correctWrd) {
+    /*
+        Processes the users guess.
+        Will add the guess to the display, note each letters status, update the chosen letters 
+        clear the user input and check if the guess is correct.
+    */
     let DEBUG = false
-    let currentGuess = [];
     let correctWord = []; // Create copy of the correct word so we can manipualte it
     let returnResult = 0; // used to identify the result on return from function  
     let alphaBlocks = document.querySelectorAll('.letterchoices')
@@ -100,7 +116,25 @@ function __addNewGuessedWordToDisplay(correctWrd) {
             }
         }
     }
-
-    //  Check if this is the maximum number of possible entries.
     return returnResult;   // if 5 returned then this is a winner
+}
+function __addGamesOne(){
+    /*
+        Will increase the total Games won count by 1 and update the display
+    */
+   document.getElementById('totalGamesWonThisSession').textContent++
+   document.getElementById('winningStreak').textContent++
+}
+function __initBoard() {
+    /* Initialise the board .  Called only once at the start of the game play. 
+        Options are already chosen at this point by the user.
+        Grabs a current word and refresehes the board.
+    */
+    currentWord = __getRandomWord(validWords);
+    //currentWord = 'SOUCT'  // souts
+    for (row = 0; row < total_number_of_guesses; row++)
+      __addFullRow();
+    if (DEBUG) {
+      console.log("THE CORRECT WORD IS : " + currentWord);
+    }
 }
