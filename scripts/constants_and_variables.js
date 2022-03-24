@@ -5,7 +5,7 @@
 MASTER_DEBUG = true;
 DEBUG_Random = true;
 DEBUG_RANDOM_WORD = true;
-DEBUG_WORD = 'ALLAY'
+DEBUG_WORD = 'LEASE'
 
 let DEBUG = true;
 let currentGuess = 0;

@@ -67,14 +67,14 @@ function __addFullRow() {
         __addABoxToTheGrid()
     }
 }
-function __addNewGuessedWordToDisplay(correctWrd) {
+function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual random/secret word
     /*
         Processes the users guess.
         Will add the guess to the display, note each letters status, update the chosen letters 
         clear the user input and check if the guess is correct.
     */
     let DEBUG = false
-    let correctWord = []; // Create copy of the correct word so we can manipualte it
+    let correctWordArry = []; // Create copy of the correct word so we can manipualte it
     let returnResult = 0; // used to identify the result on return from function  
     let alphaBlocks = document.querySelectorAll('.letterchoices')
     /* Gets the latest guessed word and populates the correct row*/
@@ -89,17 +89,17 @@ function __addNewGuessedWordToDisplay(correctWrd) {
         console.log(listOfAllGuesses)
     }
     for (t = 0; t < 5; t++) {  // create an array of the letters in the guessed word.
-        correctWord.push(correctWrd[t])
+        correctWordArry.push(correctWrd[t])
         displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
 
     }
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
         alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word        
-        if (listOfAllGuesses[startingRow][t] == correctWord[t]) {
+        if (listOfAllGuesses[startingRow][t] == correctWordArry[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
-            correctWord[t] = '';  // Letter has been marked off so disregard. 
-            console.log(correctWord)
+            correctWordArry[t] = '';  // Letter has been marked off so disregard. 
+            console.log(correctWordArry)
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'green'
         }
         else {
@@ -107,9 +107,10 @@ function __addNewGuessedWordToDisplay(correctWrd) {
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'grey'
         }
     }
-    for (t = 0; t < 5; t++) {
-        if (correctWord[t] != '') {
-            if (correctWord.indexOf(listOfAllGuesses[startingRow][t]) > -1) {
+    for (t = 0; t < 5; t++) {  // checking for letters correct but in the wrong spot.
+        if (correctWordArry[t] != '') {
+            if ((index =correctWordArry.indexOf(listOfAllGuesses[startingRow][t])) > -1) {
+                correctWordArry[index] = '';  // remove it from the list of letters to check This ensures we dont mark too many letters
                 alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
                 displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
                 alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'orange'
