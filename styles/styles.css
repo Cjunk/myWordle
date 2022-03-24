@@ -2,22 +2,23 @@
 */
 html {
     background-color:black;
-    margin:auto;
+    margin:0 auto;
+    display:flex;
+}
+body {
+    background-color:white;
+    display:inline-flex;
+    margin: 0 auto;
 }
 h1 {
     color: black;
 }
 img {
-    width:100%;
-    display:grid;
+    width:40px;
+    margin:0 40%;
+    height:80%;
 }
-body {
-    background-color:white;
-    /*display:inline-block;*/
-    border-radius:45px;
-    margin: 0 auto;
 
-}
 
 /* First Popup: ***************************************************
     First Screen styling: The options screen at the start
@@ -47,6 +48,10 @@ body {
 .mainPageVisible{
     width:100%;
     display:normal;
+}
+#bannerimg {
+    width:100%;
+    margin: 0 auto;
 }
 #pageheader {
     grid-column:1/4;
@@ -174,10 +179,7 @@ cursor: pointer;
 
 /* right side panel */
 .bitcoinImg {
-    grid-row-start: 4;
     width:40px;
-
-    margin:auto;
 }
 #bitcoinSection {
     margin:auto;
