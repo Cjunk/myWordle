@@ -55,13 +55,12 @@ button {
     position:relative;
     display:normal;
 }
+
 #theGrid {
     display:grid;
-    grid-template-columns: 1fr 60% 1fr;  
+    grid-template-columns: 1fr 3fr 1fr;  
     margin:5px auto;
-}
-#theGrid {
-    border:1px solid black;
+    border:1px solid black;   
 }
 /* The BOARD/GRID PROPERTIES */
 #row{
@@ -205,7 +204,9 @@ cursor: pointer;
     width:10%;
     height: 10px;
     position:fixed;
-    background-color: red;;
+    background-color: red;
+    border:2px solid grey;
+    background-color: blue;
     top:25%;
     left:20%;
     margin:auto;
