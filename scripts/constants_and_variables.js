@@ -15,3 +15,5 @@ let listOfAllGuesses = []
 
 let gamesWon = 0
 let winningStreak = 0
+
+let animationNotComplete = 5;

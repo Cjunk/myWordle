@@ -1,6 +1,6 @@
 textboxElem = document.getElementById("userInputBox")
 textboxElem.addEventListener('change', function (e) {
-    __registerNewWord()
+    enterBut()
 })
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -13,15 +13,16 @@ function __registerNewWord() {
     /*
 
     */
+   let result = 0;
     currentGuess++
     textboxelem = document.getElementById('userInputBox')
     if (__isWordAValidWord(textboxelem.value.toUpperCase())) {
         listOfAllGuesses.push(textboxelem.value.toUpperCase());
-        result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display    
+        result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display  
         if (result == 5) {
             // This is a winning combination of letters.
             __addGamesOne() 
-            resetGame()
+            //resetGame()
 
         }else {
             // check if there are any more guesses left
@@ -31,8 +32,11 @@ function __registerNewWord() {
                 document.getElementById('winningStreak').textContent = '0'
             }
         }
+    }else {
+        invalidWordAlert();
     }
     textboxelem.value = '';
+    return result
 }
 function __getRandomWord(theWordList) {
     // returns a random word from the dictionary
@@ -67,6 +71,9 @@ function __addFullRow() {
         __addABoxToTheGrid()
     }
 }
+function reduceTheanimationCount() {
+    animationNotComplete = animationNotComplete -1;
+}
 function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual random/secret word
     /*
         Processes the users guess.
@@ -77,6 +84,7 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
     let correctWordArry = []; // Create copy of the correct word so we can manipualte it
     let returnResult = 0; // used to identify the result on return from function  
     let alphaBlocks = document.querySelectorAll('.letterchoices')
+    
     /* Gets the latest guessed word and populates the correct row*/
     displayText = document.querySelectorAll('.boxLetter')
     displayBoxes = document.querySelector('#row')
@@ -88,18 +96,17 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
         console.log("displayBoxes = ", displayBoxes);
         console.log(listOfAllGuesses)
     }
-    for (t = 0; t < 5; t++) {  // create an array of the letters in the guessed word.
+    for (t = 0; t < 5; t++) {  // add to array of the letters in the guessed word and display them
         correctWordArry.push(correctWrd[t])
         displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
-
     }
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
-        alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word        
+        alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word   
+        //displayBoxes.childNodes[t + (startingRow * 5)].addEventListener(TransitionEvent, reduceTheanimationCount())     
         if (listOfAllGuesses[startingRow][t] == correctWordArry[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
             correctWordArry[t] = '';  // Letter has been marked off so disregard. 
-            console.log(correctWordArry)
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'green'
         }
         else {
@@ -107,6 +114,9 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'grey'
         }
     }
+     //while(animationNotComplete){
+        //animationNotComplete = animationNotComplete;
+    //}   
     for (t = 0; t < 5; t++) {  // checking for letters correct but in the wrong spot.
         if (correctWordArry[t] != '') {
             if ((index =correctWordArry.indexOf(listOfAllGuesses[startingRow][t])) > -1) {
@@ -139,3 +149,4 @@ function __initBoard() {
       console.log("THE CORRECT WORD IS : " + currentWord);
     }
 }
+

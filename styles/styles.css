@@ -13,8 +13,9 @@ img {
 }
 body {
     background-color:white;
-    display:inline-block;
+    /*display:inline-block;*/
     border-radius:45px;
+    margin: 0 auto;
 
 }
 
