@@ -5,7 +5,8 @@
 MASTER_DEBUG = false;
 DEBUG_Random = false;
 DEBUG_RANDOM_WORD = false;
-DEBUG_WORD = 'CLASP'  // test words : CHAPS/SPACE/PSALM
+DEBUG_WORD = 'LEASE'  // test words : CHAPS/SPACE/PSALM
+//DEBUG_WORD = 'SAIMS'  // test words : SPICE
 
 let DEBUG = false;
 let currentGuess = 0;

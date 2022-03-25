@@ -82,6 +82,7 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
     */
     let DEBUG = false
     let correctWordArry = []; // Create copy of the correct word so we can manipualte it
+    let currentGuessArry =[]
     let returnResult = 0; // used to identify the result on return from function  
     let alphaBlocks = document.querySelectorAll('.letterchoices')
     
@@ -100,12 +101,16 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
         correctWordArry.push(correctWrd[t])
         displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
     }
+    for (t = 0; t < 5; t++) {  // add to array of the letters in the guessed word and display them
+        currentGuessArry.push(listOfAllGuesses[startingRow][t])
+    }  
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
-        alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word      
-        if (listOfAllGuesses[startingRow][t] == correctWordArry[t]) {
+        alphaIndex = currentGuessArry[t].charCodeAt(0) - 65 //grab the letter index of the guessed word      
+        if (currentGuessArry[t] == correctWordArry[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
             correctWordArry[t] = '';  // Remove this letter of the list of letters to check 
+            currentGuessArry[t] = 'xx';
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'green'
         }
         else {
@@ -117,13 +122,20 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
     By the time we get to the next for loop, all correctly placed letters have been removed from the checking array(correctWordArry)
     So they will not get checked a second time.
     */
+   console.log("correctwordarry",correctWordArry)
+   console.log("currentGuessArry",currentGuessArry)
+   let index = 0;
     for (t = 0; t < 5; t++) {  // checking for letters correct but in the wrong spot.
-            if ((index =correctWordArry.indexOf(listOfAllGuesses[startingRow][t])) > -1) {
+        if(currentGuessArry[t] != 'xx'){
+            if ((index =correctWordArry.indexOf(currentGuessArry[t])) > -1) {
+                console.log("the letters",correctWordArry[index])
                 correctWordArry[index] = '';  // remove index from the list of letters to check This ensures we dont mark too many letters
-                alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
+                alphaIndex = currentGuessArry[t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
                 displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
                 alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'orange'
+                currentGuessArry[t]='xx'
             }
+        }
     }
     return returnResult;   // if 5 returned then this is a winner
 }
