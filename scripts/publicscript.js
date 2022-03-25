@@ -8,7 +8,7 @@ function playGame() {
   document.getElementById('firstPopUp').remove();
   document.getElementById('mainPagewrapper').classList = 'mainPageVisible';
   document.getElementById('userInputBox').classList = 'userInputBoxVisible'
-  
+
   __initBoard();
   //addGamesOne()  // testing add games won
 
@@ -95,17 +95,19 @@ function youGuessedCorrectly() {
   /*
     Shows the modal form to advise of a correct guess
     */
-    modalWrapperElem = document.getElementById('myModal2');
-    document.getElementById('userInputBox').blur();
-    modalWrapperElem.style.display = 'block';
+  modalWrapperElem = document.getElementById('myModal2');
+  document.getElementById('userInputBox').blur();
+  modalWrapperElem.style.display = 'block';
 
 }
-function noMoreGuesses(){
+function noMoreGuesses() {
   /*
 Shows the modal form to advise of a incorrect guess
 */
-console.log("NO MORE GUESSES")
-modalWrapperElem = document.getElementById('myModal3');
-modalWrapperElem.style.display = 'block';
-document.getElementById('userInputBox').blur();
+  modalWrapperElem = document.getElementById('myModal3');
+  textdata = document.getElementById('noMoreGuessText')
+  textdata.innerHTML= textdata.innerHTML+ currentWord
+  console.log(textdata)
+  modalWrapperElem.style.display = 'block';
+  document.getElementById('userInputBox').blur();
 }
