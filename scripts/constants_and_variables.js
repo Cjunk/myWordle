@@ -4,7 +4,7 @@
 //DEBUGGING_CONSTANTS
 MASTER_DEBUG = false;
 DEBUG_Random = false;
-DEBUG_RANDOM_WORD = true;
+DEBUG_RANDOM_WORD = false;
 DEBUG_WORD = 'GUESS'
 
 let DEBUG = true;
