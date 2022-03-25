@@ -33,12 +33,11 @@
             <div class="popUpheading">
                 <p>Wordle options</p>
             </div>
+            <img id="instructionsPic" src="images/instructions.png" alt="">
             <div class="popupInstructions">
+                <button onclick="playGame()"> Play Me </button>
             </div>
-            <button onclick="playGame()"> Play Me </button>
-        </div>
-        <footer id="firstPopupFooter">
-        </footer>
+
     </section>
     <section id="mainPagewrapper" class="mainPageInvisible">
 
@@ -141,8 +140,7 @@
                     <div id="facebookShareIcon">
                         <iframe
                             src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2FCJunk351&layout=button&size=large&width=77&height=28&appId"
-                            width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                            allowfullscreen="true"
+                            width="77" height="28" style="border:none;overflow:hidden" allowFullScreen="true"
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                     </div>
                     <section id="statistics">
@@ -175,9 +173,28 @@
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div id="modalBox" class="modal-content">
-            <span class="close">&times;</span>
-            <p id="invalidWordText">Invalid Word.</p>
+            <span id="incorrectClose" class="close">&times;</span>
+            <p id="invalidWordText">Not in word list.</p>
         </div>
+    </div>
+
+    <div id="myModal2" class="modal2">
+        <!-- Winning guest popup -->
+        <div id="correctGuessModalBox" class="correctGuess_modal-content">
+            <span id="correctClose" class="close">&times;</span>
+            <p id="correctGuessText" class="correctGuessStyle">Correct !!!! </p>
+
+        </div>
+    </div>
+
+    <div id="myModal3" class="modal3">
+        <!-- Winning guest popup -->
+        <div id="incorrectGuessModalBox" class="correctGuess_modal-content">
+            <span id="noMorGuesesClose" class="close">&times;</span>
+            <p id="correctGuessText" class="correctGuessStyle">Out of Guesses :( </p>
+
+        </div>
+    </div>
     </div>
 </body>
 

@@ -2,10 +2,10 @@
     This file contains all the constants used for the game .
 */
 //DEBUGGING_CONSTANTS
-MASTER_DEBUG = true;
-DEBUG_Random = true;
+MASTER_DEBUG = false;
+DEBUG_Random = false;
 DEBUG_RANDOM_WORD = true;
-DEBUG_WORD = 'LEASE'
+DEBUG_WORD = 'GUESS'
 
 let DEBUG = true;
 let currentGuess = 0;

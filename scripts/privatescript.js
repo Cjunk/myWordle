@@ -21,15 +21,14 @@ function __registerNewWord() {
         result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display  
         if (result == 5) {
             // This is a winning combination of letters.
+            //youGuessedCorrectly();
             __addGamesOne() 
-            //resetGame()
-
         }else {
             // check if there are any more guesses left
             if(currentGuess == total_number_of_guesses){
                 // NO MORE guesses left
-                resetGame()
                 document.getElementById('winningStreak').textContent = '0'
+                noMoreGuesses();
             }
         }
     }else {
@@ -101,26 +100,27 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
         displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
     }
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
-        alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word   
-        //displayBoxes.childNodes[t + (startingRow * 5)].addEventListener(TransitionEvent, reduceTheanimationCount())     
+        alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
+        alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'grey'      
         if (listOfAllGuesses[startingRow][t] == correctWordArry[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
-            correctWordArry[t] = '';  // Letter has been marked off so disregard. 
+            correctWordArry[t] = '';  // Remove this letter of the list of letters to check 
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'green'
         }
         else {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxUsedLocation'
-            alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'grey'
+            
         }
-    }
-     //while(animationNotComplete){
-        //animationNotComplete = animationNotComplete;
-    //}   
+    } 
+    /*
+    By the time we get to the next for loop, all correctly placed letters have been removed from the checking array(correctWordArry)
+    So they will not get checked a second time.
+    */
     for (t = 0; t < 5; t++) {  // checking for letters correct but in the wrong spot.
         if (correctWordArry[t] != '') {
             if ((index =correctWordArry.indexOf(listOfAllGuesses[startingRow][t])) > -1) {
-                correctWordArry[index] = '';  // remove it from the list of letters to check This ensures we dont mark too many letters
+                correctWordArry[index] = '';  // remove index from the list of letters to check This ensures we dont mark too many letters
                 alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
                 displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
                 alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'orange'
@@ -148,5 +148,15 @@ function __initBoard() {
     if (DEBUG) {
       console.log("THE CORRECT WORD IS : " + currentWord);
     }
+}
+function noMoreGuesses(){
+      /*
+    Shows the modal form to advise of a incorrect guess
+    */
+   console.log("NO MORE GUESSES")
+    modalWrapperElem = document.getElementById('myModal3');
+    modalWrapperElem.style.display = 'block';
+    document.getElementById('userInputBox').blur();
+  
 }
 
