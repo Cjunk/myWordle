@@ -7,7 +7,7 @@ DEBUG_Random = false;
 DEBUG_RANDOM_WORD = false;
 DEBUG_WORD = 'CLASP'  // test words : CHAPS/SPACE/PSALM
 
-let DEBUG = true;
+let DEBUG = false;
 let currentGuess = 0;
 let currentWord = ''
 let total_number_of_guesses = 6;
