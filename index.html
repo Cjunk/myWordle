@@ -31,11 +31,27 @@
     <section id="firstPopUp" class="firstPopupVisibile">
         <div id="outerBox">
             <div class="popUpheading">
-                <p>Wordle options</p>
+                  <p>Wordle options</p>              
+                <form action="login.html" id="theForm">
+                <fieldset>
+                    <legend>Number of Guesses</legend>
+                    <select name='Racketselection' id="select">
+                        <option>Select an option</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </fieldset>
+
+
+
+            </form>
+
             </div>
             <img id="instructionsPic" src="images/instructions.png" alt="">
             <div class="popupInstructions">
-                <button onclick="playGame()"> Play Me </button>
+                <button onclick="playGame()" id="playBut"> Play Me </button>
             </div>
 
     </section>

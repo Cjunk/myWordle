@@ -36,18 +36,32 @@ img {
     border:3px solid rgb(187, 184, 184); 
     border-radius: 15px; 
     box-shadow: 10px 10px;     
- 
 
+}
+#playBut{
+    height:50%;
+    width:80%;
+    margin:auto;
+    display:block;
+    background-image: linear-gradient(green,yellow);
+    
 }
 .popUpheading {
     padding:15px 15px;
-    text-align: center;;
+    text-align: center;
+    margin:auto;
 }
 #instructionsPic {
     display:block;
     width:100%;
     margin:0;
     height:100%;
+}
+.popupInstructions {
+    margin:auto;
+    height:100%;
+    width:100%;
+    padding: 25% 0;
 }
 
 /* Main Game Page stylings: *************************************************** 

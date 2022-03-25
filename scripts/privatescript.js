@@ -1,7 +1,9 @@
-textboxElem = document.getElementById("userInputBox")
-textboxElem.addEventListener('change', function (e) {
-    enterBut()
-})
+textboxElem = document.getElementById("userInputBox");
+textboxElem.addEventListener('keyup', function (e) {
+    if(e.key == 'Enter'){
+    enterBut();
+    }
+});
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
@@ -11,17 +13,16 @@ textboxElem.addEventListener('change', function (e) {
     }(document, 'script', 'facebook-jssdk'));
 function __registerNewWord() {
     /*
-
     */
    let result = 0;
-    currentGuess++
     textboxelem = document.getElementById('userInputBox')
     if (__isWordAValidWord(textboxelem.value.toUpperCase())) {
+        currentGuess++
         listOfAllGuesses.push(textboxelem.value.toUpperCase());
         result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display  
         if (result == 5) {
             // This is a winning combination of letters.
-            //youGuessedCorrectly();
+            youGuessedCorrectly();
             __addGamesOne() 
         }else {
             // check if there are any more guesses left
@@ -100,8 +101,7 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
         displayText[t + (startingRow * 5)].textContent = listOfAllGuesses[startingRow][t]
     }
     for (t = 0; t < 5; t++) {  // Mark of the correct placements
-        alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
-        alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'grey'      
+        alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word      
         if (listOfAllGuesses[startingRow][t] == correctWordArry[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
@@ -110,7 +110,7 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
         }
         else {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxUsedLocation'
-            
+            alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'grey'
         }
     } 
     /*
@@ -118,14 +118,12 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
     So they will not get checked a second time.
     */
     for (t = 0; t < 5; t++) {  // checking for letters correct but in the wrong spot.
-        if (correctWordArry[t] != '') {
             if ((index =correctWordArry.indexOf(listOfAllGuesses[startingRow][t])) > -1) {
                 correctWordArry[index] = '';  // remove index from the list of letters to check This ensures we dont mark too many letters
                 alphaIndex = listOfAllGuesses[startingRow][t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
                 displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
                 alphaBlocks[alphaIndex].parentNode.style.backgroundColor = 'orange'
             }
-        }
     }
     return returnResult;   // if 5 returned then this is a winner
 }
@@ -149,14 +147,5 @@ function __initBoard() {
       console.log("THE CORRECT WORD IS : " + currentWord);
     }
 }
-function noMoreGuesses(){
-      /*
-    Shows the modal form to advise of a incorrect guess
-    */
-   console.log("NO MORE GUESSES")
-    modalWrapperElem = document.getElementById('myModal3');
-    modalWrapperElem.style.display = 'block';
-    document.getElementById('userInputBox').blur();
-  
-}
+
 

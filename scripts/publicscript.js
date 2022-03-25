@@ -89,7 +89,7 @@ function invalidWordAlert() {
   modalWrapperElem = document.getElementById('myModal');
   document.getElementById('userInputBox').blur();
   modalWrapperElem.style.display = 'block';
-
+  modalWrapperElem.focus();
 }
 function youGuessedCorrectly() {
   /*
@@ -99,4 +99,13 @@ function youGuessedCorrectly() {
     document.getElementById('userInputBox').blur();
     modalWrapperElem.style.display = 'block';
 
+}
+function noMoreGuesses(){
+  /*
+Shows the modal form to advise of a incorrect guess
+*/
+console.log("NO MORE GUESSES")
+modalWrapperElem = document.getElementById('myModal3');
+modalWrapperElem.style.display = 'block';
+document.getElementById('userInputBox').blur();
 }

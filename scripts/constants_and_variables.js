@@ -5,7 +5,7 @@
 MASTER_DEBUG = false;
 DEBUG_Random = false;
 DEBUG_RANDOM_WORD = false;
-DEBUG_WORD = 'GUESS'
+DEBUG_WORD = 'CLASP'  // test words : CHAPS/SPACE/PSALM
 
 let DEBUG = true;
 let currentGuess = 0;
