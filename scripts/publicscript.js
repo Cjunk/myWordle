@@ -20,6 +20,13 @@ function enterBut() {
   if (result == 5) {
   }
 }
+function backspaceBut() {
+  elem = document.getElementById('userInputBox')
+  if (elem.value != ''){
+    str = elem.value
+    elem.value = str.slice(0,str.length-1)
+  }
+}
 function resetGame() {
   /*
       this function will restart a new game.
