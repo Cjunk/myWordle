@@ -14,6 +14,7 @@ textboxElem.addEventListener('keyup', function (e) {
 function __registerNewWord() {
     /*
     */
+   
    let result = 0;
     textboxelem = document.getElementById('userInputBox')
     if (__isWordAValidWord(textboxelem.value.toUpperCase())) {

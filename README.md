@@ -27,3 +27,5 @@ The seed word you choose can either set you on the course for victory or plunge 
 
 ### **SCORING**
 The game will keep track of your winning streaks. Try to get the highest streak!!
+
+To play go to [wordle](https://cjunk.github.io/myWordle/)

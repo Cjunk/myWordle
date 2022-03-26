@@ -8,10 +8,7 @@ function playGame() {
   document.getElementById('firstPopUp').remove();
   document.getElementById('mainPagewrapper').classList = 'mainPageVisible';
   document.getElementById('userInputBox').classList = 'userInputBoxVisible'
-
   __initBoard();
-  //addGamesOne()  // testing add games won
-
 }
 function clickedLetter(e) {
   inputBox = document.getElementById('userInputBox')
@@ -21,7 +18,6 @@ function clickedLetter(e) {
 function enterBut() {
   result = __registerNewWord()
   if (result == 5) {
-
   }
 }
 function resetGame() {
