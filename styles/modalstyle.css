@@ -22,8 +22,6 @@ taken from https://www.w3schools.com/howto/howto_css_modals.asp
   #invalidWordText {
       text-align:center;
   }
-
-
   /* CORRECT GUESS POPUP SCREEN */
 .correctGuess_modal-content{
     background-color: #fdfafa;
@@ -41,12 +39,6 @@ taken from https://www.w3schools.com/howto/howto_css_modals.asp
 .correctGuessStyle {
     font-size: 26px;
 }
-
-
-
-
-
-
   /* The Close Button */
 .close {
     color: #aaa;
