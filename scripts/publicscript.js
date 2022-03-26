@@ -4,10 +4,14 @@
   This is the game ENTRY point
 */
 function playGame() {
+  selectvalue = document.getElementById('select').value
+  if (selectvalue=='Select an option') return;
+  total_number_of_guesses = selectvalue
   document.getElementById('firstPopUp').style.visibility = 'hidden';
   document.getElementById('firstPopUp').remove();
   document.getElementById('mainPagewrapper').classList = 'mainPageVisible';
   document.getElementById('userInputBox').classList = 'userInputBoxVisible'
+
   __initBoard();
 }
 function clickedLetter(e) {
@@ -22,9 +26,9 @@ function enterBut() {
 }
 function backspaceBut() {
   elem = document.getElementById('userInputBox')
-  if (elem.value != ''){
+  if (elem.value != '') {
     str = elem.value
-    elem.value = str.slice(0,str.length-1)
+    elem.value = str.slice(0, str.length - 1)
   }
 }
 function resetGame() {
@@ -109,7 +113,7 @@ Shows the modal form to advise of a incorrect guess
 */
   modalWrapperElem = document.getElementById('myModal3');
   textdata = document.getElementById('noMoreGuessText')
-  textdata.innerHTML= textdata.innerHTML+ currentWord
+  textdata.innerHTML = textdata.innerHTML + currentWord
   console.log(textdata)
   modalWrapperElem.style.display = 'block';
   document.getElementById('userInputBox').blur();

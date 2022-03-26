@@ -1,4 +1,5 @@
 textboxElem = document.getElementById("userInputBox");
+
 textboxElem.addEventListener('keyup', function (e) {
     if(e.key == 'Enter'){
     enterBut();
