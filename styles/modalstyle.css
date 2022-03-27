@@ -17,6 +17,7 @@ taken from https://www.w3schools.com/howto/howto_css_modals.asp
     margin: 15% auto; /* 15% from the top and centered */
     padding: 5px;
     border: 1px solid #888;
+    border-radius: 15px;
     width: 10%; /* Could be more or less, depending on screen size */
   }
   #invalidWordText {
@@ -31,6 +32,7 @@ taken from https://www.w3schools.com/howto/howto_css_modals.asp
     margin: 15% auto; /* 15% from the top and centered */    
     padding: 5px;   
     display:grid;
+    border-radius: 15px;
     grid-template-columns: 1fr 2fr;
     width:25%;
     transition-property: all;

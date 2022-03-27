@@ -3,32 +3,46 @@
   Written by Jericho Sharman
   This is the game ENTRY point
 */
+
+/*************************************************************************************************************************************/
 function playGame() {
-  selectvalue = document.getElementById('select').value
-  if (selectvalue=='Select an option') return;
-  total_number_of_guesses = selectvalue
+  /*
+  This is the entry function. Executed from the 'Play me' button from the instructions screen
+  */
+  if (document.getElementById('select').value == 'Select an option') return;
+  total_number_of_guesses = document.getElementById('select').value;
   document.getElementById('firstPopUp').style.visibility = 'hidden';
   document.getElementById('firstPopUp').remove();
   document.getElementById('mainPagewrapper').classList = 'mainPageVisible';
-  document.getElementById('userInputBox').classList = 'userInputBoxVisible'
-
+  document.getElementById('userInputBox').classList = 'userInputBoxVisible';
   __initBoard();
 }
 function clickedLetter(e) {
-  inputBox = document.getElementById('userInputBox')
-  theLetter = e.querySelector('p').textContent
-  inputBox.value = inputBox.value + theLetter
-}
-function enterBut() {
-  result = __registerNewWord()
-  if (result == 5) {
+  /* Executes when the user clicks on one of the alpha keys */
+  displayText = document.querySelectorAll('.boxLetter')
+  if (currentLetterPos < 5) {
+    inputBox.value = inputBox.value + e.querySelector('p').textContent;
+    startingRow = listOfAllGuesses.length;
+    displayText[startingRow * 5 + currentLetterPos].textContent = e.childNodes[1].innerText
+    currentLetterPos++;
   }
 }
-function backspaceBut() {
-  elem = document.getElementById('userInputBox')
-  if (elem.value != '') {
-    str = elem.value
-    elem.value = str.slice(0, str.length - 1)
+function enterBut() {
+  /* This function is called when the user either presses the enter key on the keyboard or via the mouse on the screen */
+  currentLetterPos = 0;
+  result = __registerNewWord();
+}
+function backspaceBut(e) {
+  console.log(e)
+  /* The backspace key on the screen executed via the mouse */
+  displayText = document.querySelectorAll('.boxLetter')
+  if (inputBox.value != '') {
+    inputBox.value = inputBox.value.slice(0, inputBox.value.length - 1)
+    if (currentLetterPos > 0) {
+      startingRow = listOfAllGuesses.length;
+      currentLetterPos--;
+      displayText[startingRow * 5 + currentLetterPos].textContent = '';
+    }
   }
 }
 function resetGame() {
@@ -37,10 +51,9 @@ function resetGame() {
       Clears all letters.
       resets all chosen letters
       */
-  displayText = document.querySelectorAll('.boxLetter')
-  displayBoxes = document.querySelector('#row')
-  let alphaBlocks = document.querySelectorAll('.letterchoices')
   currentGuess = 0;
+  listOfAllGuesses = [] // Clear the previous guesses
+  currentWord = __getRandomWord(validWords);  // get a new word 
   for (each of displayBoxes.childNodes) {
     each.classList = 'box unusedBox'
   }
@@ -50,22 +63,16 @@ function resetGame() {
   for (each of alphaBlocks) {
     each.parentNode.style.backgroundColor = 'rgb(236, 231, 231)';
   }
-  listOfAllGuesses = [] // Clear the previous guesses
-  currentWord = __getRandomWord(validWords);  // get a new word
 
 }
-
 /*
     The MODAL form for displaying Invalid Word
 */
-/*var modal = document.getElementById("myModal");*/
-
 // When the user clicks on <span> (x), close the modal
 //let span = document.getElementsByClassName("close")[0];
 document.getElementById("incorrectClose").onclick = function () {
   document.getElementById("myModal").style.display = "none";
 }
-//span = document.getElementsByClassName("close2")[0];
 document.getElementById("correctClose").onclick = function () {
   resetGame()
   document.getElementById("myModal2").style.display = "none";
@@ -80,6 +87,7 @@ window.onclick = function (event) {
     document.getElementById("myModal").style.display = "none";
   }
   if (event.target == document.getElementById("myModal2")) {
+    
     document.getElementById("myModal2").style.display = "none";
     resetGame()
   }
@@ -88,16 +96,7 @@ window.onclick = function (event) {
     resetGame()
   }
 }
-function invalidWordAlert() {
 
-  /*
-      Controls the popup for the Invalid word warning 
-  */
-  modalWrapperElem = document.getElementById('myModal');
-  document.getElementById('userInputBox').blur();
-  modalWrapperElem.style.display = 'block';
-  modalWrapperElem.focus();
-}
 function youGuessedCorrectly() {
   /*
     Shows the modal form to advise of a correct guess
@@ -105,16 +104,15 @@ function youGuessedCorrectly() {
   modalWrapperElem = document.getElementById('myModal2');
   document.getElementById('userInputBox').blur();
   modalWrapperElem.style.display = 'block';
-
 }
 function noMoreGuesses() {
   /*
-Shows the modal form to advise of a incorrect guess
+    Shows the modal form to advise of a incorrect guess
 */
+  
   modalWrapperElem = document.getElementById('myModal3');
   textdata = document.getElementById('noMoreGuessText')
   textdata.innerHTML = textdata.innerHTML + currentWord
-  console.log(textdata)
   modalWrapperElem.style.display = 'block';
   document.getElementById('userInputBox').blur();
 }

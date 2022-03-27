@@ -1,0 +1,5 @@
+BUGS TO FIX:
+
+1.  Out of guesses screen is showing the previous word and the current word and builds the list. It should only show one word at a time.
+2.  Out of guesses screen needs to dissapear when the user pushes 'enter' key. 
+3.  Out of guesses screen requires better formatting.
