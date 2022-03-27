@@ -54,6 +54,8 @@ function resetGame() {
   currentGuess = 0;
   listOfAllGuesses = [] // Clear the previous guesses
   currentWord = __getRandomWord(validWords);  // get a new word 
+  
+  saveProgress()
   for (each of displayBoxes.childNodes) {
     each.classList = 'box unusedBox'
   }

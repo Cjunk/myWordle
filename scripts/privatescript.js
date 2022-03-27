@@ -25,18 +25,21 @@ document.getElementById("userInputBox").addEventListener('keyup', function (e) {
 
 function __registerNewWord() {
     /*
-    
+            The new word is in the text input box.
+            This function will check if the word is valid, then add it to the list of previous guesses.
+            It will also check if its a corrct world. 
     */
     let result = 0;
     textboxelem = document.getElementById('userInputBox')
     if (__isWordAValidWord(textboxelem.value.toUpperCase())) {
-        console.log("TESTING DISPLAY ",textboxelem.textContent,"Currentword",currentWord)
+        console.log("TESTING DISPLAY ", textboxelem.textContent, "Currentword", currentWord)
         currentGuess++
         listOfAllGuesses.push(textboxelem.value.toUpperCase());
-        result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display   
+        result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display 
+
         if (result == 5) {
             // This is a winning combination of letters.
-            saveALlStats();
+            saveALlStats()
             youGuessedCorrectly();
             __addGamesOne()
         } else {
@@ -44,7 +47,6 @@ function __registerNewWord() {
             if (currentGuess == total_number_of_guesses) {
                 // NO MORE guesses left
                 winningStreak = 0;
-                document.getElementById('winningStreak').textContent = '0'
                 saveALlStats()
                 noMoreGuesses();
             }
@@ -52,6 +54,9 @@ function __registerNewWord() {
     } else {
         invalidWordAlert();
     }
+    saveProgress();
+    updateStatsDisplay()
+  
     textboxelem.value = '';
     return result
 }
@@ -156,11 +161,9 @@ function __addGamesOne() {
     /*
         Will increase the total Games won count by 1 and update the display
     */
-
-    document.getElementById('totalGamesWonThisSession').textContent++
-    document.getElementById('winningStreak').textContent++
-    gamesWon = document.getElementById('totalGamesWonThisSession').textContent
-    winningStreak = document.getElementById('winningStreak').textContent
+    winningStreak = document.getElementById('winningStreak').textContent++
+    gamesWon = document.getElementById('totalGamesWonThisSession').textContent++
+    updateStatsDisplay();
     saveALlStats();
 }
 function __initBoard() {
@@ -169,36 +172,56 @@ function __initBoard() {
         Grabs a current word and refresehes the board.
     */
     currentWord = __getRandomWord(validWords);
+    currentGuess = 0;
+    listOfAllGuesses = [];
+
     //currentWord = 'SOUCT'  // souts
     for (row = 0; row < total_number_of_guesses; row++)
         __addFullRow();
     if (DEBUG) {
         console.log("THE CORRECT WORD IS : " + currentWord);
     }
-    if(localStorage.getItem('currentWord')) {loadAllStats()};
+    if (localStorage.getItem('currentWord')) { loadAllStats() };
 }
 function saveALlStats() {
     /* Save all the stats to the local storage */
-    localStorage.setItem('GAMES', gamesWon)
-    localStorage.setItem('STREAK', winningStreak)
-    localStorage.setItem('listOfAllGuesses', JSON.stringify(listOfAllGuesses))
-    localStorage.setItem('currentWord', currentWord)
-    localStorage.setItem('currentGuess', currentGuess)
+    localStorage.setItem(TOTAL_GAMES_WON_VAR, gamesWon)
+    localStorage.setItem(WINNING_STREAK_VAR, winningStreak)
+}
+function saveProgress() {
+    localStorage.setItem(LIST_OFF_ALL_GUESSES_VAR, JSON.stringify(listOfAllGuesses))
+    localStorage.setItem(CURRENT_GUESS_NO_VAR, currentGuess)
+    localStorage.setItem(MAX_NUMBER_OF_GUESSES_VAR, total_number_of_guesses)
+    localStorage.setItem(CURRENT_WORD_VAR, currentWord)
 }
 function loadAllStats() {
     /* Save all the stats to the local storage */
-
-    document.getElementById('totalGamesWonThisSession').textContent = localStorage.getItem('GAMES')
-    document.getElementById('winningStreak').textContent = localStorage.getItem('STREAK')
-    currentGuess = localStorage.getItem('currentGuess')
-    currentWord = localStorage.getItem('currentWord')
-    listOfAllGuesses = JSON.parse(localStorage.getItem('listOfAllGuesses'))
-    for(each of listOfAllGuesses){
-        textboxelem = document.getElementById('userInputBox')
-        textboxelem.textContent = each;
-        __registerNewWord()
-        console.log("printing", each)
+    winningStreak = localStorage.getItem(WINNING_STREAK_VAR)
+    gamesWon = localStorage.getItem(TOTAL_GAMES_WON_VAR)
+    listOfAllGuesses = []
+    listOfAllGuessesTEMP = JSON.parse(localStorage.getItem(LIST_OFF_ALL_GUESSES_VAR))
+    if (listOfAllGuessesTEMP) {
+        currentWord = localStorage.getItem(CURRENT_WORD_VAR)
+        document.getElementById('totalGamesWonThisSession').textContent = localStorage.getItem('GAMES')
+        document.getElementById('winningStreak').textContent = localStorage.getItem(WINNING_STREAK_VAR)
+        if (listOfAllGuessesTEMP) {
+            console.log("listOfAllGuessesTEMP", listOfAllGuessesTEMP)
+            console.log("listOfAllGuesses", listOfAllGuesses)
+            for (each of listOfAllGuessesTEMP) {
+                textboxelem = document.getElementById('userInputBox')
+                textboxelem.value = each;
+                __registerNewWord()
+            }
+        } else {
+            listOfAllGuesses = []
+        }
     }
+}
+function updateStatsDisplay() {
+    /*
+        Only updates the statistics display
+    */
+    document.getElementById('winningStreak').textContent = winningStreak
 }
 function invalidWordAlert() {
     /*
@@ -208,5 +231,6 @@ function invalidWordAlert() {
     document.getElementById('userInputBox').blur();
     modalWrapperElem.style.display = 'block';
     modalWrapperElem.focus();
-  }
+}
+
 
