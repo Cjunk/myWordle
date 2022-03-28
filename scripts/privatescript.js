@@ -31,11 +31,11 @@ function __registerNewWord() {
     if (__isWordAValidWord(inputBox.value.toUpperCase())) {
         console.log("TESTING DISPLAY ", inputBox.textContent, "Currentword", currentWord);
         currentGuess++;
+
         listOfAllGuesses.push(inputBox.value.toUpperCase());
         result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display 
         if (result == 5) {
             // This is a winning combination of letters.
-            saveALlStats();
             youGuessedCorrectly();
             __addGamesOne();
         } else {
@@ -93,8 +93,7 @@ function __addFullRow() {
 function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual random/secret word
     /*  Processes the users guess.
         Will add the guess to the display, note each letters status, update the chosen letters 
-        clear the user input and check if the guess is correct.
-        ** CONSIDERATION: Consider having a separate function to populate the display only. 
+        clear the user input and check if the guess is correct. 
     */
     let correctWordArry = []; // Create copy of the correct word so we can manipualte it
     let returnResult = 0; // used to identify the result on return from function  
@@ -151,10 +150,10 @@ function __addGamesOne() {
     /*
         Will increase the total Games won count by 1 and update the display
     */
-    winningStreak = document.getElementById('winningStreak').textContent++
-    gamesWon = document.getElementById('totalGamesWonThisSession').textContent++
+    winningStreak = winningStreak + 1
+    gamesWon = gamesWon + 1
+    saveALlStats(); 
     updateStatsDisplay();
-    saveALlStats();
 }
 function __initBoard() {
     /* Initialise the board .  Called only once at the start of the game play. 
@@ -164,8 +163,6 @@ function __initBoard() {
     currentWord = __getRandomWord(validWords);
     currentGuess = 0;
     listOfAllGuesses = [];
-
-    //currentWord = 'SOUCT'  // souts
     for (row = 0; row < total_number_of_guesses; row++)
         __addFullRow();
     if (DEBUG) {
@@ -186,8 +183,8 @@ function saveProgress() {
 }
 function loadAllStats() {
     /* Save all the stats to the local storage */
-    winningStreak = localStorage.getItem(WINNING_STREAK_VAR)
-    gamesWon = localStorage.getItem(TOTAL_GAMES_WON_VAR)
+    winningStreak = parseInt(localStorage.getItem(WINNING_STREAK_VAR))
+    gamesWon = parseInt(localStorage.getItem(TOTAL_GAMES_WON_VAR))
     listOfAllGuesses = []
     listOfAllGuessesTEMP = JSON.parse(localStorage.getItem(LIST_OFF_ALL_GUESSES_VAR))
     if (listOfAllGuessesTEMP) {
@@ -209,7 +206,8 @@ function updateStatsDisplay() {
     /*
         Only updates the statistics display
     */
-    document.getElementById('winningStreak').textContent = winningStreak
+    document.getElementById('winningStreak').textContent = winningStreak;
+    document.getElementById('totalGamesWonThisSession').textContent = gamesWon;
 }
 function invalidWordAlert() {
     /*
@@ -220,5 +218,6 @@ function invalidWordAlert() {
     modalWrapperElem.style.display = 'block';
     modalWrapperElem.focus();
 }
+
 
 

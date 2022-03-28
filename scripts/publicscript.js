@@ -54,7 +54,7 @@ function resetGame() {
   currentGuess = 0;
   listOfAllGuesses = [] // Clear the previous guesses
   currentWord = __getRandomWord(validWords);  // get a new word 
-  
+
   saveProgress()
   for (each of displayBoxes.childNodes) {
     each.classList = 'box unusedBox'
@@ -89,7 +89,7 @@ window.onclick = function (event) {
     document.getElementById("myModal").style.display = "none";
   }
   if (event.target == document.getElementById("myModal2")) {
-    
+
     document.getElementById("myModal2").style.display = "none";
     resetGame()
   }
@@ -111,10 +111,16 @@ function noMoreGuesses() {
   /*
     Shows the modal form to advise of a incorrect guess
 */
-  
+
   modalWrapperElem = document.getElementById('myModal3');
   textdata = document.getElementById('noMoreGuessText')
   textdata.innerHTML = textdata.innerHTML + currentWord
   modalWrapperElem.style.display = 'block';
   document.getElementById('userInputBox').blur();
+}
+function resetStats() {
+  gamesWon = 0
+  winningStreak = 0
+  saveALlStats()
+  updateStatsDisplay()
 }
