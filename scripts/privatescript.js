@@ -30,20 +30,23 @@ function __registerNewWord() {
     let result = 0;
     if (__isWordAValidWord(inputBox.value.toUpperCase())) {
         console.log("TESTING DISPLAY ", inputBox.textContent, "Currentword", currentWord);
-        currentGuess++;
+        currentGuessNo++;
 
         listOfAllGuesses.push(inputBox.value.toUpperCase());
         result = __addNewGuessedWordToDisplay(currentWord)   ///  and this word to the display 
         if (result == 5) {
             // This is a winning combination of letters.
+            currentGuessNo = 0;
             youGuessedCorrectly();
             __addGamesOne();
         } else {
             // check if there are any more guesses left
-            if (currentGuess == total_number_of_guesses) {
+            if (currentGuessNo == total_number_of_guesses) {
                 // NO MORE guesses left
                 winningStreak = 0;
+                currentGuessNo = 0;
                 saveALlStats();
+                saveProgress()
                 noMoreGuesses();
             }
         }
@@ -161,7 +164,7 @@ function __initBoard() {
         Grabs a current word and refresehes the board.
     */
     currentWord = __getRandomWord(validWords);
-    currentGuess = 0;
+    currentGuessNo = 0;
     listOfAllGuesses = [];
     for (row = 0; row < total_number_of_guesses; row++)
         __addFullRow();
@@ -177,7 +180,7 @@ function saveALlStats() {
 }
 function saveProgress() {
     localStorage.setItem(LIST_OFF_ALL_GUESSES_VAR, JSON.stringify(listOfAllGuesses))
-    localStorage.setItem(CURRENT_GUESS_NO_VAR, currentGuess)
+    localStorage.setItem(CURRENT_GUESS_NO_VAR, currentGuessNo)
     localStorage.setItem(MAX_NUMBER_OF_GUESSES_VAR, total_number_of_guesses)
     localStorage.setItem(CURRENT_WORD_VAR, currentWord)
 }

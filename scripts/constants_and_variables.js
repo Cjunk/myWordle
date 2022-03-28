@@ -9,7 +9,7 @@ DEBUG_WORD = 'LEASE'  // test words : CHAPS/SPACE/PSALM
 //DEBUG_WORD = 'SAIMS'  // test words : SPICE
 
 let DEBUG = false;
-let currentGuess = 0;
+let currentGuessNo = 0;
 let currentWord = ''
 let total_number_of_guesses = 6;
 let listOfAllGuesses = []
