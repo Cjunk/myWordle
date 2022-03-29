@@ -112,14 +112,14 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
         if (currentGuess[t] == correctWordArry[t]) {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxRightLocation'
             returnResult++;
-            correctWordArry[t] = '';  // Remove this letter of the list of letters to check 
+            correctWordArry[t] = nullLetter;  // Remove this letter of the list of letters to check 
             currentGuess[t] = nullLetter; // mark of in users guess word
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = ELEM_BACKGROUNDCOLOR_CORRECT
         }
         else {
             displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxUsedLocation'
             alphaBlocks[alphaIndex].parentNode.style.backgroundColor = ELEM_BACKGROUNDCOLOR_UNUSED
-        };
+        }
     }
     /*
     By the time we get to the next for loop, all correctly placed letters have been removed from the checking array(correctWordArry)
@@ -128,7 +128,7 @@ function __addNewGuessedWordToDisplay(correctWrd) {  //correctWrd is the actual 
     for (t = 0; t < 5; t++) {  // checking for letters correct but in the wrong spot.
         if (currentGuess[t] != nullLetter) {
             if ((index = correctWordArry.indexOf(currentGuess[t])) > -1) {
-                correctWordArry[index] = '';  // remove index from the list of letters to check This ensures we dont mark too many letters
+                correctWordArry[index] = nullLetter;  // remove index from the list of letters to check This ensures we dont mark too many letters
                 alphaIndex = currentGuess[t].charCodeAt(0) - 65 //grab the letter index of the guessed word 
                 displayBoxes.childNodes[t + (startingRow * 5)].classList = 'box boxWrongLocation'
                 if (alphaBlocks[alphaIndex].parentNode.style.backgroundColor != ELEM_BACKGROUNDCOLOR_UNUSED)
@@ -155,7 +155,7 @@ function __addGamesOne() {
     */
     winningStreak = winningStreak + 1
     gamesWon = gamesWon + 1
-    saveALlStats(); 
+    saveALlStats();
     updateStatsDisplay();
 }
 function __initBoard() {
@@ -170,8 +170,8 @@ function __initBoard() {
         __addFullRow();
     if (DEBUG) {
         console.log("THE CORRECT WORD IS : " + currentWord);
-    }
-    if (localStorage.getItem('currentWord')) { loadAllStats() };
+    }   
+    if (localStorage.getItem(LIST_OFF_ALL_GUESSES_VAR)) { loadAllStats() }
 }
 function saveALlStats() {
     /* Save all the stats to the local storage */
@@ -191,9 +191,10 @@ function loadAllStats() {
     listOfAllGuesses = []
     listOfAllGuessesTEMP = JSON.parse(localStorage.getItem(LIST_OFF_ALL_GUESSES_VAR))
     if (listOfAllGuessesTEMP) {
+        total_number_of_guesses = parseInt(localStorage.getItem(MAX_NUMBER_OF_GUESSES_VAR))
         currentWord = localStorage.getItem(CURRENT_WORD_VAR)
-        document.getElementById('totalGamesWonThisSession').textContent = localStorage.getItem(TOTAL_GAMES_WON_VAR)
-        document.getElementById('winningStreak').textContent = localStorage.getItem(WINNING_STREAK_VAR)
+        document.getElementById('totalGamesWonThisSession').textContent = gamesWon
+        document.getElementById('winningStreak').textContent = winningStreak
         if (listOfAllGuessesTEMP) {
             for (each of listOfAllGuessesTEMP) {
                 textboxelem = document.getElementById('userInputBox')
