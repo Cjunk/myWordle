@@ -3,8 +3,10 @@ General Assembly project Wordle Game
 
 ### By Jericho Sharman
 
+![alt text](images/backyard.jpg "Title")
+
 ### **DESCRIPTION**
-Wordle is an word game bearing some resemblance to popular code-breaking, colour-coded board games like Mastermind, but is even more simple in its design.
+Wordle is a word game bearing some resemblance to popular code-breaking, colour-coded board games like Mastermind, but is even more simple in its design.
 
 Every new game brings a new, mystery five letter word to guess – which must be done through entering five letter words onto Wordle’s tile grid.
 
